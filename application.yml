@@ -1,26 +1,5 @@
-server:
-  port: 8082
-
 spring:
-  application:
-    name: service-email
-  mail:
-    host: smtp.163.com
-    username: qxmwrr@163.com
-    password: GRDCGOUASMNEBSTH
-    default-encoding: UTF-8
-    properties.mail.smtp.port: 994
-    properties.mail.smtp.starttls.enable: true
-    properties.mail.smtp.starttls.required: true
-    properties.mail.smtp.ssl.enable: true
-
-#注册到Eureka服务中心
-eureka:
-  client:
-    serviceUrl: # eureka server的路径
-      #把 eureka 集群中的所有 url 都填写了进来，也可以只写一台，因为各个 eureka server 可以同步注册表
-      defaultZone: http://EurekaServerA:8761/eureka/,http://EurekaServerB:8762/eureka/
-
-  instance: #使用ip注册，否则会使用主机名注册了(此处考虑到对老版本的兼容，新版本经过实验都是ip)
-    prefer-ip-address: true #自定义实例显示格式，加上版本号，便于多版本管理，注意是ip-address，早期版本是ipAddress
-    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloud?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT
+    username: root
+    password: root
